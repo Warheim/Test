@@ -48,4 +48,3 @@ class TestFolder(unittest.TestCase):
                 print('File found')
             else:
                 print(f'Error code: {self.create_result}, {self.errors[self.create_result]}')
-
