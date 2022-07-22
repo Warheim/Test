@@ -1,4 +1,4 @@
-from yandex import Yandex
+from Yandex.yandex import Yandex
 import unittest
 
 
