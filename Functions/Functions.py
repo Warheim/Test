@@ -8,7 +8,7 @@ def doc_people(doc_number):
             result = ask['name']
             return result
     if result == 0:
-        return doc_people(input('Неверный номер! Введите номер документа повторно: '))
+        return 'Неверный номер!'
 
 
 def doc_shelf(doc_number):
@@ -18,13 +18,12 @@ def doc_shelf(doc_number):
             result = key
             return f'Номер полки: {result}'
     if result == 0:
-        return doc_shelf(input('Неверный номер! Введите номер документа повторно: '))
+        return 'Неверный номер!'
 
 
 def doc_list():
     for ask in documents:
-        print(f'{ask["type"]} "{ask["number"]}" "{ask["name"]}"')
-    return ''
+        return f'{ask["type"]} "{ask["number"]}" "{ask["name"]}"'
 
 
 def doc_add(add_shelf, add_type, add_number, add_name):
@@ -35,9 +34,7 @@ def doc_add(add_shelf, add_type, add_number, add_name):
                 value.append(add_number)
                 return f'Документ {add_number} добавлен.'
     else:
-        print('Неверный номер полки!')
-        return doc_add(input('Введите номер полки для хранения: '), input('Введите тип документа: '),
-                       input('Введите номер документа: '), input('Введите имя владельца документа: '))
+        return 'Неверный номер полки!'
 
 
 def doc_delete(doc_number):
@@ -52,7 +49,7 @@ def doc_delete(doc_number):
             documents.remove(task)
             return f'Документ {doc_number} удалён.'
     if len(control) == 0:
-        return doc_delete(input('Неверный номер! Введите номер документа повторно: '))
+        return 'Неверный номер!'
 
 
 def doc_move():
@@ -69,13 +66,13 @@ def doc_move():
                         ask.remove(task)
                         return result
         else:
-            return enter_number(input('Неверный номер! Введите номер документа повторно: '))
+            return 'Неверный номер!'
 
     def enter_shelf(add_shelf):
         if add_shelf in directories.keys():
             return add_shelf
         else:
-            return enter_shelf(input('Неверный номер полки! Введите номер полки повторно: '))
+            return 'Неверный номер!'
 
     number = enter_number(input('Введите номер документа: '))
     shelf = enter_shelf(input('Введите номер полки: '))
@@ -113,5 +110,3 @@ def program(command=(input('Введите команду: ').lower())):
     else:
         return program(command=(input('Неверная команда! Введите команду повторно: ').lower()))
 
-
-print(program())
